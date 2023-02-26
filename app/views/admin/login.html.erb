@@ -1,0 +1,20 @@
+<div class="login">
+    <div class="container">
+        <h2>Admin Login</h2><br>
+        <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
+            <%= form_with url: "/admin/login" , method: :post do |form| %>
+            <div class="field"><%= form.label :username %>
+                <%= form.text_field :username %>
+            </div><br>
+            <div class="field">
+                <%= form.label :password %><%= form.password_field :password %>
+            </div><br>
+            <div class="actions">
+                <%= form.submit "Admin Login" %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+

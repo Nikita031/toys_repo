@@ -1,0 +1,24 @@
+<table>
+<tr>
+    <% count=0 %>
+    <% @gallery.each do |gallery|%>
+    <% if (count % 3) == 0%>
+</tr>
+<tr>
+    <% end %>
+    <% count+=1 %>
+    <td>
+        <% if gallery.images.attached? %>
+        <%= image_tag gallery.images.first, :width=>"200px", :height=>"200px" %>
+        <% end %><br><br>
+        <strong><%= gallery.name %></strong>
+        <br /><br>
+        <strong> Price : </strong>₹<%= gallery.price %><br />
+        <strong>Description:</strong> <%= gallery.description %><br />
+        <strong>Category:</strong> <%= gallery.category %>
+        <br /><br>
+        <%= button_to 'Add to cart',line_items_path(:store_id => gallery.id)%>
+    </td>
+    <% end %>
+</tr>
+</table>

@@ -1,0 +1,33 @@
+
+<p id="notice"><%= notice %></p>
+
+<div>
+  <% (0...@store.images.count).each do |image| %>
+    <%= image_tag(@store.images[image], style:'width:15%; height: 15%') %>
+  <% end %>
+</div>
+<br>
+
+<p>
+  <strong>Name:</strong>
+  <%= @store.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @store.category %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @store.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  ₹<%= @store.price %>
+</p>
+<br>
+
+<%= link_to 'Edit', edit_store_path(@store) %> |
+<%= link_to 'Back', stores_path %>

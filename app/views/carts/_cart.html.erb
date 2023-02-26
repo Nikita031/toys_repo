@@ -1,0 +1,43 @@
+<% unless cart.line_items.empty? %>
+<br>
+<br>
+<div ><h1 style="color:brown;text-align:center;">Your Cart </h1><br></div>
+<br>
+<br>
+
+<section class="h-100 h-custom">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="table-responsive">
+          <table class= "table" border ="2">
+	        <%= render(cart.line_items) %>
+          <thead>
+          <tr>
+          <th scope="col"> Quantity</th>
+          <th scope="col" > Name  </th>
+          <th scope="col" >price</th>
+          </tr>
+          </thead>
+	        <tr>
+		      <td colspan="2">Total</td>
+		      <td class="total_cell">₹<%= (cart.total_price)  %></td>
+	        </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div style=" text-align:center;">
+  <%= button_to 'Empty Cart', cart, :method => :delete, :confirm => 'Are you sure?' %>
+  <p><br>
+	<%= link_to "Continue Shopping >>",:controller=>"gallery",:action=>"index" %>
+  </p><br>
+  <%end%>
+  <% if user_signed_in? %>
+    <%= link_to "Checkout", payment_checkout_path %>
+  <% else %>
+    <%= link_to "Checkout", new_user_session_path %>
+  <% end %>
+</div>
